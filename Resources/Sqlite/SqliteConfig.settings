@@ -1,0 +1,30 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="MinecraftEnchantCalculator.Resources.Sqlite" GeneratedClassName="SqliteConfig">
+  <Profiles />
+  <Settings>
+    <Setting Name="Items" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">SELECT {0}, {1} FROM Items</Value>
+    </Setting>
+    <Setting Name="Applicable" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">SELECT {0}, {1} FROM Applicable</Value>
+    </Setting>
+    <Setting Name="Conflicts" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">SELECT {0}, {1} FROM Conflicts</Value>
+    </Setting>
+    <Setting Name="Enchantments" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">SELECT {0}, {1}, {2}, {3}, {4} FROM Enchantments</Value>
+    </Setting>
+    <Setting Name="ResourcesDir" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">Resources</Value>
+    </Setting>
+    <Setting Name="SqliteDir" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">Sqlite</Value>
+    </Setting>
+    <Setting Name="Database" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">MC_ENCHANTMENTS.db</Value>
+    </Setting>
+    <Setting Name="ConnectionString" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">Data Source={0};Version=3</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

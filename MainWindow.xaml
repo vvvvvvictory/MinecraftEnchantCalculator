@@ -1,0 +1,134 @@
+﻿<Window x:Class="MinecraftEnchantCalculator.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MinecraftEnchantCalculator"
+        xmlns:i18n="clr-namespace:MinecraftEnchantCalculator.Resources.I18n"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="600" Width="1066" Icon="Resources/Images/Minecraft.png" PreviewKeyDown="MainWindow_OnPreviewKeyDown">
+  <Window.Resources>
+    <ResourceDictionary>
+      <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="Resources/Style/GroupBoxStyle.xaml" />
+        <ResourceDictionary Source="Resources/Style/ItemViewStyle.xaml" />
+        <ResourceDictionary Source="Resources/Style/EnchantmentViewStyle.xaml" />
+        <ResourceDictionary Source="Resources/Style/FavoriteViewStyle.xaml" />
+        <ResourceDictionary Source="Resources/Style/ResultViewStyle.xaml" />
+      </ResourceDictionary.MergedDictionaries>
+      <x:Static x:Key="X_Location" Member="i18n:Location.Instance" />
+      <local:FeasibleConverter x:Key="X_FeasibleConverter" />
+      <Style x:Key="X_CalculateAndFavoriteButtonStyle" TargetType="Button">
+        <Setter Property="HorizontalAlignment" Value="Center" />
+        <Setter Property="Margin" Value="5" />
+        <Setter Property="Padding" Value="20 5" />
+      </Style>
+      <Style x:Key="X_SummaryHeaderStyle" TargetType="TextBlock">
+        <Setter Property="HorizontalAlignment" Value="Right" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="Margin" Value="10 0 10 0 " />
+      </Style>
+      <Style x:Key="X_SummaryValueStyle" TargetType="TextBlock">
+        <Setter Property="HorizontalAlignment" Value="Left" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="Margin" Value="10 0 0 0" />
+        <Setter Property="FontSize" Value="24" />
+        <Setter Property="Foreground" Value="Red" />
+      </Style>
+    </ResourceDictionary>
+  </Window.Resources>
+  <Grid>
+    <Grid.RowDefinitions>
+      <RowDefinition Height="Auto" />
+      <RowDefinition Height="4*" />
+      <RowDefinition Height="Auto" />
+      <RowDefinition Height="6*" />
+    </Grid.RowDefinitions>
+    <Menu Grid.Row="0" Padding="5">
+      <MenuItem Header="{Binding Source={StaticResource X_Location}, Path=[Language]}">
+        <MenuItem Tag="zh-CN" Header="简体中文 (zh-CN)" Click="Language_Changed" />
+        <MenuItem Tag="zh-TW" Header="繁體中文 (zh-TW)" Click="Language_Changed" />
+        <MenuItem Tag="en-US" Header="English (en-US)" Click="Language_Changed" />
+        <MenuItem Tag="fr-FR" Header="Français (fr-FR)" Click="Language_Changed" />
+        <MenuItem Tag="ja-JP" Header="日本語 (ja-JP)" Click="Language_Changed" />
+        <MenuItem Tag="de-DE" Header="Deutsch (de-DE)" Click="Language_Changed" />
+      </MenuItem>
+      <MenuItem Header="{Binding Source={StaticResource X_Location}, Path=[About]}" Click="About_OnClick" />
+      <MenuItem Header="{Binding Source={StaticResource X_Location}, Path=[Donate]}" Click="Donate_OnClick" />
+    </Menu>
+    <Grid Grid.Row="1">
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="*" />
+        <ColumnDefinition Width="*" />
+        <ColumnDefinition Width="*" />
+        <ColumnDefinition Width="*" />
+      </Grid.ColumnDefinitions>
+      <GroupBox Name="X_ItemGroupBox" Grid.Column="0" Background="Transparent" Style="{StaticResource X_GroupBoxStyle}" Header="{Binding Source={StaticResource X_Location}, Path=[ItemSelect]}">
+        <ListBox Name="X_ItemViews" Style="{DynamicResource X_ItemViewStyle}" Background="Transparent" ItemsSource="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType=local:MainWindow}, Path=ItemViews}" SelectionChanged="X_ItemViews_OnSelectionChanged" SelectionMode="Single" />
+      </GroupBox>
+      <GroupBox Name="X_InitEnchantmentGroupBox" Grid.Column="1" Background="Transparent" Style="{StaticResource X_GroupBoxStyle}" Header="{Binding Source={StaticResource X_Location}, Path=[InitializedEnchantment]}">
+        <ListBox Name="X_InitEnchantmentViews" Background="Transparent" Style="{DynamicResource X_EnchantmentViewStyle}" ItemsSource="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType=local:MainWindow}, Path=InitEnchantmentViews}" SelectionMode="Multiple" />
+      </GroupBox>
+      <GroupBox Name="X_BookEnchantmentGroupBox" Grid.Column="2" Background="Transparent" Style="{StaticResource X_GroupBoxStyle}" Header="{Binding Source={StaticResource X_Location}, Path=[EnchantmentBookSelect]}">
+        <ListBox Name="X_BookEnchantmentViews" Style="{DynamicResource X_EnchantmentViewStyle}" Background="Transparent" ItemsSource="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType=local:MainWindow}, Path=BookEnchantmentViews}" SelectionMode="Multiple" />
+      </GroupBox>
+      <GroupBox Grid.Column="3" Name="X_SummaryGroupBox" Background="Transparent" Style="{StaticResource X_GroupBoxStyle}" Header="{Binding Source={StaticResource X_Location}, Path=[EnchantmentResult]}">
+        <Grid Grid.Column="3" Background="Transparent">
+          <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+          </Grid.RowDefinitions>
+          <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="*" />
+          </Grid.ColumnDefinitions>
+          <Button Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Style="{StaticResource X_CalculateAndFavoriteButtonStyle}" Content="{Binding Source={StaticResource X_Location}, Path=[Calculate]}" Command="local:AppCommands.CalculateCommand">
+            <Button.CommandBindings>
+              <CommandBinding Command="local:AppCommands.CalculateCommand" Executed="Calculate_Executed" CanExecute="Calculate_CanExecute" />
+            </Button.CommandBindings>
+          </Button>
+          <TextBlock Grid.Row="1" Grid.Column="0" Style="{StaticResource X_SummaryHeaderStyle}" Text="{Binding Source={StaticResource X_Location}, Path=[TotalStep]}" />
+          <Rectangle Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" Fill="Black" Height="1.5" />
+          <Grid Grid.Row="3" Grid.Column="0">
+            <Grid.RowDefinitions>
+              <RowDefinition Height="*" />
+              <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <TextBlock Grid.Row="0" Style="{StaticResource X_SummaryHeaderStyle}" Text="{Binding Source={StaticResource X_Location}, Path=[ExpCost]}" />
+            <CheckBox Grid.Row="1" Margin=" 10 0 10 0" VerticalAlignment="Center" HorizontalAlignment="Right" Content="{Binding Source={StaticResource X_Location}, Path=[IncludeRename]}" IsChecked="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType=local:MainWindow}, Path=Summary.IsRename, Mode=TwoWay}" />
+          </Grid>
+          <Rectangle Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="3" Fill="Black" Height="1.5" />
+          <TextBlock Grid.Row="5" Grid.Column="0" Style="{StaticResource X_SummaryHeaderStyle}" Text="{Binding Source={StaticResource X_Location}, Path=[IsFeasible]}" />
+          <Button Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="3" Style="{StaticResource X_CalculateAndFavoriteButtonStyle}" Content="{Binding Source={StaticResource X_Location}, Path=[Favorite]}" Command="local:AppCommands.FavoriteCommand">
+            <Button.CommandBindings>
+              <CommandBinding Command="local:AppCommands.FavoriteCommand" Executed="Favorite_Executed" CanExecute="Favorite_CanExecuted" />
+            </Button.CommandBindings>
+          </Button>
+          <Rectangle Grid.Row="1" Grid.Column="1" Grid.RowSpan="5" Fill="Black" Width="1.5" />
+          <TextBlock Grid.Row="1" Grid.Column="2" Style="{StaticResource X_SummaryValueStyle}" Text="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType=local:MainWindow}, Path=Summary.TotalStep}" />
+          <TextBlock Grid.Row="3" Grid.Column="2" Style="{StaticResource X_SummaryValueStyle}" Text="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType=local:MainWindow}, Path=Summary.ExpCost}" />
+          <TextBlock Grid.Row="5" Grid.Column="2" Style="{StaticResource X_SummaryValueStyle}" Text="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType=local:MainWindow}, Path=Summary.IsFeasible, Converter={StaticResource X_FeasibleConverter}}" />
+        </Grid>
+      </GroupBox>
+    </Grid>
+    <GridSplitter Grid.Row="2" HorizontalAlignment="Stretch" VerticalAlignment="Center" Height="10" />
+    <Grid Grid.Row="3">
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="2*" />
+        <ColumnDefinition Width="Auto" />
+        <ColumnDefinition Width="8*" />
+      </Grid.ColumnDefinitions>
+      <GroupBox Grid.Column="0" Name="X_FavoriteGroupBox" Style="{StaticResource X_GroupBoxStyle}" Background="Transparent" Header="{Binding Source={StaticResource X_Location}, Path=[MyFavorite]}">
+        <ListBox Name="X_FavoriteViews" Style="{DynamicResource X_FavoriteViewStyle}" Background="Transparent" ItemsSource="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType=local:MainWindow}, Path=FavoriteViews}" SelectionMode="Single" SelectionChanged="X_FavoriteViews_OnSelectionChanged" Loaded="X_FavoriteViews_OnLoaded" RenderTransformOrigin="0.5,0.5" />
+      </GroupBox>
+      <GridSplitter Grid.Column="1" VerticalAlignment="Stretch" HorizontalAlignment="Center" Width="10" />
+      <ListBox Grid.Column="2" Background="Transparent" Style="{DynamicResource X_ResultViewStyle}" ItemsSource="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType=local:MainWindow}, Path=ResultViews}" />
+    </Grid>
+  </Grid>
+</Window>

@@ -1,0 +1,55 @@
+﻿<Window x:Class="MinecraftEnchantCalculator.About"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:i18n="clr-namespace:MinecraftEnchantCalculator.Resources.I18n"
+        mc:Ignorable="d"
+        Title="About" Height="450" Width="800" WindowStartupLocation="CenterOwner">
+  <Window.Resources>
+    <x:Static x:Key="X_Location" Member="i18n:Location.Instance" />
+    <Style TargetType="TextBlock">
+      <Setter Property="FontSize" Value="18" />
+      <Setter Property="Margin" Value="10 5" />
+    </Style>
+  </Window.Resources>
+  <Grid>
+    <Grid.RowDefinitions>
+      <RowDefinition Height="Auto" />
+      <RowDefinition Height="Auto" />
+      <RowDefinition Height="Auto" />
+      <RowDefinition Height="Auto" />
+      <RowDefinition Height="*" />
+    </Grid.RowDefinitions>
+    <TextBlock Grid.Row="0" Text="{Binding Source={StaticResource X_Location}, Path=[OpenSource]}" HorizontalAlignment="Center" FontSize="24" />
+    <StackPanel Grid.Row="1" Orientation="Horizontal">
+      <TextBlock Text="GitHub" VerticalAlignment="Center" />
+      <Image Source="Resources/Images/Github.png" Width="48" Height="48" />
+      <TextBlock VerticalAlignment="Center">
+        <Hyperlink NavigateUri="https://baidu.com" RequestNavigate="OpenSource_Hyperlink">
+          https://baidu.com
+        </Hyperlink>
+      </TextBlock>
+    </StackPanel>
+    <StackPanel Grid.Row="2" Orientation="Horizontal" Margin="0 10">
+      <TextBlock Text="Gitee" VerticalAlignment="Center" />
+      <Image Source="Resources/Images/Gitee.png" Width="48" Height="48" />
+      <TextBlock VerticalAlignment="Center">
+        <Hyperlink NavigateUri="https://baidu.com" RequestNavigate="OpenSource_Hyperlink">
+          https://baidu.com
+        </Hyperlink>
+      </TextBlock>
+    </StackPanel>
+    <TextBlock Grid.Row="3" Text="{Binding Source={StaticResource X_Location}, Path=[UserGuide]}" HorizontalAlignment="Center" FontSize="24" />
+    <ScrollViewer Grid.Row="4">
+      <StackPanel>
+        <Image Source="Resources/Images/UserGuide/1.png" />
+        <Image Source="Resources/Images/UserGuide/2.png" />
+        <Image Source="Resources/Images/UserGuide/3.png" />
+        <Image Source="Resources/Images/UserGuide/4.png" />
+        <Image Source="Resources/Images/UserGuide/5.png" />
+        <Image Source="Resources/Images/UserGuide/6.png" />
+      </StackPanel>
+    </ScrollViewer>
+  </Grid>
+</Window>

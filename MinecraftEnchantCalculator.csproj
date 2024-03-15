@@ -1,0 +1,157 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net6.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Resources\Images\Axe.png" />
+    <None Remove="Resources\Images\Boots.png" />
+    <None Remove="Resources\Images\Bow.png" />
+    <None Remove="Resources\Images\Brush.png" />
+    <None Remove="Resources\Images\CarrotOnAStick.png" />
+    <None Remove="Resources\Images\CarvedPumpkin.png" />
+    <None Remove="Resources\Images\Chestplate.png" />
+    <None Remove="Resources\Images\Compass.gif" />
+    <None Remove="Resources\Images\Compass.png" />
+    <None Remove="Resources\Images\Crossbow.png" />
+    <None Remove="Resources\Images\Elytra.png" />
+    <None Remove="Resources\Images\EnchantedBook.gif" />
+    <None Remove="Resources\Images\EnchantedBook.png" />
+    <None Remove="Resources\Images\Exp.png" />
+    <None Remove="Resources\Images\FavoriteDelete.png" />
+    <None Remove="Resources\Images\FishingRod.png" />
+    <None Remove="Resources\Images\FlintAndSteel.png" />
+    <None Remove="Resources\Images\Gitee.png" />
+    <None Remove="Resources\Images\Github.png" />
+    <None Remove="Resources\Images\Heart.png" />
+    <None Remove="Resources\Images\Helmet.png" />
+    <None Remove="Resources\Images\Hoe.png" />
+    <None Remove="Resources\Images\IsAvaliable.png" />
+    <None Remove="Resources\Images\Leggings.png" />
+    <None Remove="Resources\Images\Minecraft.png" />
+    <None Remove="Resources\Images\Pickaxe.png" />
+    <None Remove="Resources\Images\PlayerHead.png" />
+    <None Remove="Resources\Images\Plus.png" />
+    <None Remove="Resources\Images\RecoveryCompass.gif" />
+    <None Remove="Resources\Images\RecoveryCompass.png" />
+    <None Remove="Resources\Images\RightArrow.png" />
+    <None Remove="Resources\Images\Shears.png" />
+    <None Remove="Resources\Images\Shield.png" />
+    <None Remove="Resources\Images\Shovel.png" />
+    <None Remove="Resources\Images\StepCount.png" />
+    <None Remove="Resources\Images\Sword.png" />
+    <None Remove="Resources\Images\Trident.png" />
+    <None Remove="Resources\Images\TurtleShell.png" />
+    <None Remove="Resources\Images\UserGuide\1.png" />
+    <None Remove="Resources\Images\UserGuide\2.png" />
+    <None Remove="Resources\Images\UserGuide\3.png" />
+    <None Remove="Resources\Images\UserGuide\4.png" />
+    <None Remove="Resources\Images\UserGuide\5.png" />
+    <None Remove="Resources\Images\UserGuide\6.png" />
+    <None Remove="Resources\Images\WarpedFungusOnAStick.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Resources\Images\Heart.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Images\UserGuide\1.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Images\UserGuide\2.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Images\UserGuide\3.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Images\UserGuide\4.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Images\UserGuide\5.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Images\UserGuide\6.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="System.Data.SQLite" Version="1.0.118" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Resources\I18n\" />
+    <Folder Include="Resources\Json\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resources\Images\Axe.png" />
+    <Resource Include="Resources\Images\Boots.png" />
+    <Resource Include="Resources\Images\Bow.png" />
+    <Resource Include="Resources\Images\Brush.png" />
+    <Resource Include="Resources\Images\CarrotOnAStick.png" />
+    <Resource Include="Resources\Images\CarvedPumpkin.png" />
+    <Resource Include="Resources\Images\Chestplate.png" />
+    <Resource Include="Resources\Images\Compass.png" />
+    <Resource Include="Resources\Images\Crossbow.png" />
+    <Resource Include="Resources\Images\Elytra.png" />
+    <Resource Include="Resources\Images\EnchantedBook.png" />
+    <Resource Include="Resources\Images\Exp.png" />
+    <Resource Include="Resources\Images\FavoriteDelete.png" />
+    <Resource Include="Resources\Images\FishingRod.png" />
+    <Resource Include="Resources\Images\FlintAndSteel.png" />
+    <Resource Include="Resources\Images\Gitee.png" />
+    <Resource Include="Resources\Images\Github.png" />
+    <Resource Include="Resources\Images\Helmet.png" />
+    <Resource Include="Resources\Images\Hoe.png" />
+    <Resource Include="Resources\Images\IsAvaliable.png" />
+    <Resource Include="Resources\Images\Leggings.png" />
+    <Resource Include="Resources\Images\Minecraft.png" />
+    <Resource Include="Resources\Images\Pickaxe.png" />
+    <Resource Include="Resources\Images\PlayerHead.png" />
+    <Resource Include="Resources\Images\Plus.png" />
+    <Resource Include="Resources\Images\RecoveryCompass.png" />
+    <Resource Include="Resources\Images\RightArrow.png" />
+    <Resource Include="Resources\Images\Shears.png" />
+    <Resource Include="Resources\Images\Shield.png" />
+    <Resource Include="Resources\Images\Shovel.png" />
+    <Resource Include="Resources\Images\StepCount.png" />
+    <Resource Include="Resources\Images\Sword.png" />
+    <Resource Include="Resources\Images\Trident.png" />
+    <Resource Include="Resources\Images\TurtleShell.png" />
+    <Resource Include="Resources\Images\WarpedFungusOnAStick.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Resources\Settings\LanguageKey.Designer.cs">
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>LanguageKey.settings</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\Sqlite\SqliteConfig.Designer.cs">
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>SqliteConfig.settings</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Resources\Settings\LanguageKey.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>LanguageKey.Designer.cs</LastGenOutput>
+    </None>
+    <None Update="Resources\Sqlite\MC_ENCHANTMENTS.db">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Resources\Sqlite\SqliteConfig.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>SqliteConfig.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+
+</Project>

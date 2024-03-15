@@ -1,0 +1,405 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Test" xml:space="preserve">
+    <value>テスト</value>
+  </data>
+  <data name="de_DE" xml:space="preserve">
+    <value>ドイツ人</value>
+  </data>
+  <data name="en_US" xml:space="preserve">
+    <value>英語</value>
+  </data>
+  <data name="fr_FR" xml:space="preserve">
+    <value>フランス語</value>
+  </data>
+  <data name="ja_JP" xml:space="preserve">
+    <value>日本語</value>
+  </data>
+  <data name="zh_CH" xml:space="preserve">
+    <value>単純化された中国人</value>
+  </data>
+  <data name="zh_TW" xml:space="preserve">
+    <value>繁体字中国語</value>
+  </data>
+  <data name="Language" xml:space="preserve">
+    <value>言語</value>
+  </data>
+  <data name="About" xml:space="preserve">
+    <value>について</value>
+  </data>
+  <data name="ItemSelect" xml:space="preserve">
+    <value>1.アイテムの選択</value>
+  </data>
+  <data name="InitializedEnchantment" xml:space="preserve">
+    <value>2.初期エンチャント</value>
+  </data>
+  <data name="EnchantmentBookSelect" xml:space="preserve">
+    <value>3.魅惑的な本を選択します</value>
+  </data>
+  <data name="EnchantmentResult" xml:space="preserve">
+    <value>4.関連する結果</value>
+  </data>
+  <data name="Helmet" xml:space="preserve">
+    <value>ダイヤモンドヘルメット</value>
+  </data>
+  <data name="Chestplate" xml:space="preserve">
+    <value>ダイヤモンドチェストアーマー</value>
+  </data>
+  <data name="Leggings" xml:space="preserve">
+    <value>ダイヤモンドの脚保護</value>
+  </data>
+  <data name="Boots" xml:space="preserve">
+    <value>ダイヤモンドブーツ</value>
+  </data>
+  <data name="Sword" xml:space="preserve">
+    <value>ダイヤモンド・ソード</value>
+  </data>
+  <data name="Axe" xml:space="preserve">
+    <value>ダイヤモンドx</value>
+  </data>
+  <data name="Pickaxe" xml:space="preserve">
+    <value>ダイヤモンドピック</value>
+  </data>
+  <data name="Hoe" xml:space="preserve">
+    <value>ダイヤモンドホー</value>
+  </data>
+  <data name="Bow" xml:space="preserve">
+    <value>弓</value>
+  </data>
+  <data name="FishingRod" xml:space="preserve">
+    <value>釣り竿</value>
+  </data>
+  <data name="Trident" xml:space="preserve">
+    <value>トライデント</value>
+  </data>
+  <data name="Crossbow" xml:space="preserve">
+    <value>クロスボウ</value>
+  </data>
+  <data name="Shears" xml:space="preserve">
+    <value>はさみ</value>
+  </data>
+  <data name="Elytra" xml:space="preserve">
+    <value>脾臓</value>
+  </data>
+  <data name="Protection" xml:space="preserve">
+    <value>守る</value>
+  </data>
+  <data name="FireProtection" xml:space="preserve">
+    <value>炎保護</value>
+  </data>
+  <data name="FeatherFalling" xml:space="preserve">
+    <value>転倒保護</value>
+  </data>
+  <data name="BlastProtection" xml:space="preserve">
+    <value>爆発保護</value>
+  </data>
+  <data name="ProjectileProtection" xml:space="preserve">
+    <value>排出</value>
+  </data>
+  <data name="Thoms" xml:space="preserve">
+    <value>とげ</value>
+  </data>
+  <data name="Respiration" xml:space="preserve">
+    <value>水中呼吸</value>
+  </data>
+  <data name="DepthStrider" xml:space="preserve">
+    <value>ディープシーエクスプロア</value>
+  </data>
+  <data name="AquaAffinity" xml:space="preserve">
+    <value>水中掘削</value>
+  </data>
+  <data name="Sharpness" xml:space="preserve">
+    <value>シャープ</value>
+  </data>
+  <data name="Smite" xml:space="preserve">
+    <value>アンデッドキラー</value>
+  </data>
+  <data name="BaneOfArthropods" xml:space="preserve">
+    <value>手足キラー</value>
+  </data>
+  <data name="KnockBack" xml:space="preserve">
+    <value>反発</value>
+  </data>
+  <data name="FireAspect" xml:space="preserve">
+    <value>炎の追加</value>
+  </data>
+  <data name="Looting" xml:space="preserve">
+    <value>スナッチ</value>
+  </data>
+  <data name="Efficiency" xml:space="preserve">
+    <value>効率</value>
+  </data>
+  <data name="SilkTouch" xml:space="preserve">
+    <value>正確なコレクション</value>
+  </data>
+  <data name="Unbreaking" xml:space="preserve">
+    <value>耐久性</value>
+  </data>
+  <data name="Fortune" xml:space="preserve">
+    <value>運</value>
+  </data>
+  <data name="Power" xml:space="preserve">
+    <value>強さ</value>
+  </data>
+  <data name="Punch" xml:space="preserve">
+    <value>ショック</value>
+  </data>
+  <data name="Flame" xml:space="preserve">
+    <value>ファイアーヴェルミカ</value>
+  </data>
+  <data name="Infinity" xml:space="preserve">
+    <value>無制限</value>
+  </data>
+  <data name="LuckOfTheSea" xml:space="preserve">
+    <value>海の世話</value>
+  </data>
+  <data name="Lure" xml:space="preserve">
+    <value>餌釣り</value>
+  </data>
+  <data name="FrostWalker" xml:space="preserve">
+    <value>フロスティ</value>
+  </data>
+  <data name="Mending" xml:space="preserve">
+    <value>トリミング</value>
+  </data>
+  <data name="CurseOfBinding" xml:space="preserve">
+    <value>呪い</value>
+  </data>
+  <data name="CurseOfVanishing" xml:space="preserve">
+    <value>消える</value>
+  </data>
+  <data name="Impaling" xml:space="preserve">
+    <value>穿刺</value>
+  </data>
+  <data name="Riptide" xml:space="preserve">
+    <value>回転</value>
+  </data>
+  <data name="Loyalty" xml:space="preserve">
+    <value>忠誠心</value>
+  </data>
+  <data name="Channeling" xml:space="preserve">
+    <value>雷を引用してください</value>
+  </data>
+  <data name="Multishot" xml:space="preserve">
+    <value>複数の射撃</value>
+  </data>
+  <data name="Piercing" xml:space="preserve">
+    <value>浸透します</value>
+  </data>
+  <data name="QuickCharge" xml:space="preserve">
+    <value>高速充填</value>
+  </data>
+  <data name="SoulSpeed" xml:space="preserve">
+    <value>魂</value>
+  </data>
+  <data name="SwiftSneak" xml:space="preserve">
+    <value>滑らかなステルス</value>
+  </data>
+  <data name="SweepingEdge" xml:space="preserve">
+    <value>スイープブレード</value>
+  </data>
+  <data name="EnchantmentsAreConflicting" xml:space="preserve">
+    <value>魅惑には対立があります：</value>
+  </data>
+  <data name="Calculate" xml:space="preserve">
+    <value>計算を始めましょう</value>
+  </data>
+  <data name="TotalStep" xml:space="preserve">
+    <value>合計ステップ</value>
+  </data>
+  <data name="ExpCost" xml:space="preserve">
+    <value>EXPを消費</value>
+  </data>
+  <data name="IsFeasible" xml:space="preserve">
+    <value>実現可能です</value>
+  </data>
+  <data name="Favorite" xml:space="preserve">
+    <value>コレクション</value>
+  </data>
+  <data name="Brush" xml:space="preserve">
+    <value>みがきます</value>
+  </data>
+  <data name="CarrotOnAStick" xml:space="preserve">
+    <value>ニンジン釣り竿</value>
+  </data>
+  <data name="CarvedPumkin" xml:space="preserve">
+    <value>彫刻カボチャ</value>
+  </data>
+  <data name="Compass" xml:space="preserve">
+    <value>方位磁針</value>
+  </data>
+  <data name="FlintAndSteel" xml:space="preserve">
+    <value>フリントストーン</value>
+  </data>
+  <data name="PlayerHead" xml:space="preserve">
+    <value>プレーヤーヘッド</value>
+  </data>
+  <data name="RecoveryCompass" xml:space="preserve">
+    <value>トレースポインター</value>
+  </data>
+  <data name="Shield" xml:space="preserve">
+    <value>シールド</value>
+  </data>
+  <data name="TurtleShell" xml:space="preserve">
+    <value>亀の甲羅</value>
+  </data>
+  <data name="WarpedFungusOnAStick" xml:space="preserve">
+    <value>奇妙な真菌釣り棒</value>
+  </data>
+  <data name="EnchantedBook" xml:space="preserve">
+    <value>エンチャント</value>
+  </data>
+  <data name="Donate" xml:space="preserve">
+    <value>スポンサー</value>
+  </data>
+  <data name="IncludeRename" xml:space="preserve">
+    <value>変更を含む</value>
+  </data>
+  <data name="FeasibleYes" xml:space="preserve">
+    <value>実行可能！</value>
+  </data>
+  <data name="FeasibleNo" xml:space="preserve">
+    <value>高すぎる！</value>
+  </data>
+  <data name="MyFavorite" xml:space="preserve">
+    <value>私のコレクション</value>
+  </data>
+  <data name="FavoriteItemName" xml:space="preserve">
+    <value>プロジェクト名</value>
+  </data>
+  <data name="Ok" xml:space="preserve">
+    <value>確認する</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>キャンセル</value>
+  </data>
+  <data name="Shovel" xml:space="preserve">
+    <value>ダイヤスペード</value>
+  </data>
+  <data name="ThankYou" xml:space="preserve">
+    <value>ありがとう ´ ღ( ´･ᴗ･` )</value>
+  </data>
+  <data name="UserGuide" xml:space="preserve">
+    <value>ユーザーのガイダンス</value>
+  </data>
+  <data name="OpenSource" xml:space="preserve">
+    <value>オープンソースアドレス</value>
+  </data>
+</root>

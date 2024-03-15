@@ -1,0 +1,20 @@
+﻿<Window x:Class="MinecraftEnchantCalculator.Donate"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:i18n="clr-namespace:MinecraftEnchantCalculator.Resources.I18n"
+        mc:Ignorable="d"
+        Title="Donate" Height="450" Width="800" WindowStartupLocation="CenterOwner">
+  <Window.Resources>
+    <x:Static x:Key="X_Location" Member="i18n:Location.Instance" />
+  </Window.Resources>
+  <Grid>
+    <Grid.RowDefinitions>
+      <RowDefinition Height="8*" />
+      <RowDefinition Height="Auto" />
+    </Grid.RowDefinitions>
+    <Image Grid.Row="0" Source="Resources/Images/Heart.png" Width="128" Height="128" VerticalAlignment="Center" HorizontalAlignment="Center" />
+    <TextBlock Grid.Row="1" Text="{Binding Source={StaticResource X_Location}, Path=[ThankYou]}" Margin="60 30" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="60" Foreground="RED" />
+  </Grid>
+</Window>

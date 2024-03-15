@@ -1,0 +1,81 @@
+﻿<Window x:Class="MinecraftEnchantCalculator.FavoriteNameInput"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:i18n="clr-namespace:MinecraftEnchantCalculator.Resources.I18n"
+        mc:Ignorable="d"
+        Title="FavoriteNameInput" Height="Auto" Width="Auto" Closing="FavoriteNameInput_OnClosing" WindowStartupLocation="CenterOwner" SizeToContent="WidthAndHeight" MinHeight="150" MinWidth="350" Loaded="FavoriteNameInput_OnLoaded">
+  <Window.Resources>
+    <x:Static x:Key="X_Location" Member="i18n:Location.Instance" />
+    <Style x:Key="X_OkButtonStyle" TargetType="Button">
+      <Setter Property="HorizontalAlignment" Value="Center" />
+      <Setter Property="VerticalAlignment" Value="Center" />
+      <Setter Property="Margin" Value="10 15 10 5" />
+      <Setter Property="Padding" Value=" 40 5 40 5" />
+      <Setter Property="FontSize" Value="16" />
+      <Setter Property="Template">
+        <Setter.Value>
+          <ControlTemplate TargetType="Button">
+            <Border Name="X_PART_Border" BorderBrush="#5356FF" BorderThickness="1" CornerRadius="5" Padding="{TemplateBinding Padding}" Margin="{TemplateBinding Margin}">
+              <Grid>
+                <ContentPresenter />
+              </Grid>
+            </Border>
+            <ControlTemplate.Triggers>
+              <Trigger Property="IsMouseOver" Value="True">
+                <Setter TargetName="X_PART_Border" Property="Background" Value="#378CE7" />
+              </Trigger>
+              <Trigger Property="IsPressed" Value="True">
+                <Setter TargetName="X_PART_Border" Property="Background" Value="#5356FF" />
+              </Trigger>
+            </ControlTemplate.Triggers>
+          </ControlTemplate>
+        </Setter.Value>
+      </Setter>
+    </Style>
+    <Style x:Key="X_CancelButtonStyle" TargetType="Button" BasedOn="{StaticResource X_OkButtonStyle}">
+      <Setter Property="Template">
+        <Setter.Value>
+          <ControlTemplate TargetType="Button">
+            <Border Name="X_PART_Border" BorderBrush="#5356FF" BorderThickness="1" CornerRadius="5" Padding="{TemplateBinding Padding}" Margin="{TemplateBinding Margin}">
+              <Grid>
+                <ContentPresenter />
+              </Grid>
+            </Border>
+            <ControlTemplate.Triggers>
+              <Trigger Property="IsMouseOver" Value="True">
+                <Setter TargetName="X_PART_Border" Property="Background" Value="#FA4659" />
+              </Trigger>
+              <Trigger Property="IsPressed" Value="True">
+                <Setter TargetName="X_PART_Border" Property="Background" Value="red" />
+              </Trigger>
+            </ControlTemplate.Triggers>
+          </ControlTemplate>
+        </Setter.Value>
+      </Setter>
+    </Style>
+  </Window.Resources>
+  <Grid>
+    <Grid.RowDefinitions>
+      <RowDefinition Height="Auto" />
+      <RowDefinition Height="Auto" />
+    </Grid.RowDefinitions>
+    <Grid Grid.Row="0">
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="Auto" />
+        <ColumnDefinition Width="*" />
+      </Grid.ColumnDefinitions>
+      <TextBlock Grid.Column="0" FontSize="16" Margin="10 5" Padding="10 2" Text="{Binding Source={StaticResource X_Location}, Path=[FavoriteItemName]}" />
+      <TextBox Name="X_Input" FontSize="16" Margin="10,5,10,5" Padding="10 2" Grid.Column="1" HorizontalAlignment="Stretch" />
+    </Grid>
+    <Grid Grid.Row="1">
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="*" />
+        <ColumnDefinition Width="*" />
+      </Grid.ColumnDefinitions>
+      <Button Grid.Column="0" Style="{StaticResource X_OkButtonStyle}" Content="{Binding Source={StaticResource X_Location}, Path=[Ok]}" Click="Ok_OnClick" />
+      <Button Grid.Column="1" Style="{StaticResource X_CancelButtonStyle}" Content="{Binding Source={StaticResource X_Location}, Path=[Cancel]}" Click="Cancel_OnClick" />
+    </Grid>
+  </Grid>
+</Window>

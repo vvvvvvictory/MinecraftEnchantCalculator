@@ -1,0 +1,15 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="MinecraftEnchantCalculator.Resources.Settings" GeneratedClassName="LanguageKey">
+  <Profiles />
+  <Settings>
+    <Setting Name="EnchantedBook" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">EnchantedBook</Value>
+    </Setting>
+    <Setting Name="FeasibleYes" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">FeasibleYes</Value>
+    </Setting>
+    <Setting Name="FeasibleNo" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">FeasibleNo</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

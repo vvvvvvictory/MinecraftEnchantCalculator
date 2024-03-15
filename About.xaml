@@ -26,8 +26,8 @@
       <TextBlock Text="GitHub" VerticalAlignment="Center" />
       <Image Source="Resources/Images/Github.png" Width="48" Height="48" />
       <TextBlock VerticalAlignment="Center">
-        <Hyperlink NavigateUri="https://baidu.com" RequestNavigate="OpenSource_Hyperlink">
-          https://baidu.com
+        <Hyperlink NavigateUri="https://github.com/vvvvvvictory/MinecraftEnchantCalculator/" RequestNavigate="OpenSource_Hyperlink">
+          https://github.com/vvvvvvictory/MinecraftEnchantCalculator/
         </Hyperlink>
       </TextBlock>
     </StackPanel>
@@ -35,8 +35,8 @@
       <TextBlock Text="Gitee" VerticalAlignment="Center" />
       <Image Source="Resources/Images/Gitee.png" Width="48" Height="48" />
       <TextBlock VerticalAlignment="Center">
-        <Hyperlink NavigateUri="https://baidu.com" RequestNavigate="OpenSource_Hyperlink">
-          https://baidu.com
+        <Hyperlink NavigateUri="https://gitee.com/liihoo/MinecraftEnchantCalculator" RequestNavigate="OpenSource_Hyperlink">
+          https://gitee.com/liihoo/MinecraftEnchantCalculator/
         </Hyperlink>
       </TextBlock>
     </StackPanel>

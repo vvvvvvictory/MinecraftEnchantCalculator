@@ -1,7 +1,7 @@
 ﻿using System.Globalization;
 using System.Windows.Data;
 
-namespace MinecraftEnchantCalculator
+namespace MinecraftEnchantCalculator.Source
 {
   /// <summary>
   ///   转换过程最大值值为5，先不考虑普适情况

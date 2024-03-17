@@ -1,6 +1,6 @@
 ﻿using System.Windows.Input;
 
-namespace MinecraftEnchantCalculator
+namespace MinecraftEnchantCalculator.Source
 {
   public static class TemplateCommands
   {

@@ -37,6 +37,10 @@
     <None Remove="Resources\Images\Pickaxe.png" />
     <None Remove="Resources\Images\PlayerHead.png" />
     <None Remove="Resources\Images\Plus.png" />
+    <None Remove="Resources\Images\PopError.png" />
+    <None Remove="Resources\Images\PopInfo.png" />
+    <None Remove="Resources\Images\PopSuccess.png" />
+    <None Remove="Resources\Images\PopWarning.png" />
     <None Remove="Resources\Images\RecoveryCompass.gif" />
     <None Remove="Resources\Images\RecoveryCompass.png" />
     <None Remove="Resources\Images\RightArrow.png" />
@@ -87,6 +91,8 @@
   <ItemGroup>
     <Folder Include="Resources\I18n\" />
     <Folder Include="Resources\Json\" />
+    <Folder Include="Themes\" />
+    <Folder Include="Shortcut\" />
   </ItemGroup>
 
   <ItemGroup>
@@ -115,6 +121,10 @@
     <Resource Include="Resources\Images\Pickaxe.png" />
     <Resource Include="Resources\Images\PlayerHead.png" />
     <Resource Include="Resources\Images\Plus.png" />
+    <Resource Include="Resources\Images\PopError.png" />
+    <Resource Include="Resources\Images\PopInfo.png" />
+    <Resource Include="Resources\Images\PopSuccess.png" />
+    <Resource Include="Resources\Images\PopWarning.png" />
     <Resource Include="Resources\Images\RecoveryCompass.png" />
     <Resource Include="Resources\Images\RightArrow.png" />
     <Resource Include="Resources\Images\Shears.png" />
@@ -141,6 +151,15 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Update="Resources\Json\Test01.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Resources\Json\test02.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Resources\Json\test03.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Update="Resources\Settings\LanguageKey.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>LanguageKey.Designer.cs</LastGenOutput>

@@ -402,4 +402,46 @@
   <data name="OpenSource" xml:space="preserve">
     <value>Open Source -Adresse</value>
   </data>
+  <data name="EnchantOrder" xml:space="preserve">
+    <value>Verzauberung</value>
+  </data>
+  <data name="CalculatePressed" xml:space="preserve">
+    <value>Berechnen Sie die Reihenfolge der Verzauberung erfolgreich</value>
+  </data>
+  <data name="AddFavoriteSuccess" xml:space="preserve">
+    <value>Erfolgreich zum Sammlungsclip hinzufügen</value>
+  </data>
+  <data name="FavoriteNameDiscard" xml:space="preserve">
+    <value>Stornierte Sammlung</value>
+  </data>
+  <data name="DeleteFavoriteFailed" xml:space="preserve">
+    <value>Projektfehler löschen</value>
+  </data>
+  <data name="DeleteFavoriteSuccess" xml:space="preserve">
+    <value>Projekterfolg löschen</value>
+  </data>
+  <data name="FavoriteSelectChanged" xml:space="preserve">
+    <value>Die Anzeigeanzeige erfolgreich anzeigen</value>
+  </data>
+  <data name="Welcome" xml:space="preserve">
+    <value>Willkommen Minecraft Enchant Calculator</value>
+  </data>
+  <data name="AddFavoriteFailed" xml:space="preserve">
+    <value>Wenn Sie keine Sammlung hinzufügen, können Sie keine Dateien schreiben</value>
+  </data>
+  <data name="LoadFavoriteFailed" xml:space="preserve">
+    <value>Das Laden des Sammlungsprojekts fehlgeschlagen</value>
+  </data>
+  <data name="FavoriteNameInputClosed" xml:space="preserve">
+    <value>Das Eingabefeld wurde manuell geschlossen oder ein ungültiger Name eingegeben, und die Sammlung kann nicht hinzugefügt werden</value>
+  </data>
+  <data name="FavoriteHasPresent" xml:space="preserve">
+    <value>Es gibt bereits gleichnamige Sammlungen und kann nicht hinzugefügt werden</value>
+  </data>
+  <data name="LoadFavoriteSuccess" xml:space="preserve">
+    <value>Projekterfolg laden</value>
+  </data>
+  <data name="AuthorStatement" xml:space="preserve">
+    <value>Autorenerklärung</value>
+  </data>
 </root>

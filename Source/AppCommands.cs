@@ -1,6 +1,6 @@
 ﻿using System.Windows.Input;
 
-namespace MinecraftEnchantCalculator
+namespace MinecraftEnchantCalculator.Source
 {
   public class AppCommands
   {
@@ -9,5 +9,8 @@ namespace MinecraftEnchantCalculator
 
     public static readonly RoutedUICommand FavoriteCommand =
       new(nameof(FavoriteCommand), nameof(FavoriteCommand), typeof(AppCommands));
+
+    public static readonly RoutedUICommand StopBoringCommand =
+      new(nameof(StopBoringCommand), nameof(StopBoringCommand), typeof(AppCommands));
   }
 }

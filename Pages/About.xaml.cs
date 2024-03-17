@@ -1,8 +1,9 @@
-﻿using System.Diagnostics;
+﻿using System.Configuration;
+using System.Diagnostics;
 using System.Windows;
 using System.Windows.Navigation;
 
-namespace MinecraftEnchantCalculator
+namespace MinecraftEnchantCalculator.Pages
 {
   /// <summary>
   ///   About.xaml 的交互逻辑
@@ -13,6 +14,8 @@ namespace MinecraftEnchantCalculator
     {
       InitializeComponent();
     }
+
+    public string Version { get; } = ConfigurationManager.AppSettings["Version"]!;
 
     private void OpenSource_Hyperlink(object sender, RequestNavigateEventArgs e)
     {

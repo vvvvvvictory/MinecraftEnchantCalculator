@@ -1,0 +1,14 @@
+﻿<Window x:Class="MinecraftEnchantCalculator.Pages.ViewTest"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:components="clr-namespace:MinecraftEnchantCalculator.Components"
+        mc:Ignorable="d"
+        Title="ViewTest" Height="450" Width="800">
+  <Grid>
+    <StackPanel>
+      <components:MessagePopup MessageType="ERROR" Message="错误" Icon="../Resources/Images/PopError.png" Background="LightGray" HorizontalAlignment="Left" />
+    </StackPanel>
+  </Grid>
+</Window>

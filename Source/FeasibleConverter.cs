@@ -3,7 +3,7 @@ using System.Windows.Data;
 using MinecraftEnchantCalculator.Resources.I18n;
 using MinecraftEnchantCalculator.Resources.Settings;
 
-namespace MinecraftEnchantCalculator
+namespace MinecraftEnchantCalculator.Source
 {
   public class FeasibleConverter : IValueConverter
   {

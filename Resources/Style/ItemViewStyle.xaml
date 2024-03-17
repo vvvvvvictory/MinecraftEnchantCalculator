@@ -5,26 +5,29 @@
                     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
                     mc:Ignorable="d">
   <Style x:Key="X_ItemViewStyle" TargetType="ListBox">
+    <Setter Property="Background" Value="Transparent" />
+    <Setter Property="Margin" Value="5" />
     <Setter Property="BorderThickness" Value="0" />
+    <!-- <Setter Property="BorderThickness" Value="0" /> -->
     <Setter Property="ItemContainerStyle">
       <Setter.Value>
         <Style TargetType="ListBoxItem">
           <Setter Property="Template">
             <Setter.Value>
               <ControlTemplate TargetType="ListBoxItem">
-                <Border Name="X_PART_Border" Margin="15 5" d:DataContext="{d:DesignInstance view_model:ItemView}">
+                <Border Name="X_PART_Border" Margin="10 2" Padding="15 2" CornerRadius="4" d:DataContext="{d:DesignInstance view_model:ItemView}">
                   <StackPanel Orientation="Horizontal">
-                    <CheckBox VerticalAlignment="Center" Focusable="False" IsChecked="{Binding RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay, Path=IsSelected}" />
+                    <CheckBox Template="{StaticResource CheckBoxTemplateInListBox}" VerticalAlignment="Center" Focusable="False" IsChecked="{Binding RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay, Path=IsSelected}" />
                     <Image Source="{Binding Path=ImageSource}" Width="30" Height="30" Margin="5 0" />
                     <TextBlock Text="{Binding Path=DisplayName}" Padding="5 2" VerticalAlignment="Center" />
                   </StackPanel>
                 </Border>
                 <ControlTemplate.Triggers>
                   <Trigger Property="IsMouseOver" Value="True">
-                    <Setter TargetName="X_PART_Border" Property="Background" Value="#e3fdfd" />
+                    <Setter TargetName="X_PART_Border" Property="Background" Value="{StaticResource X_ListBoxItemHover}" />
                   </Trigger>
                   <Trigger Property="IsSelected" Value="True">
-                    <Setter TargetName="X_PART_Border" Property="Background" Value="#71c9ce" />
+                    <Setter TargetName="X_PART_Border" Property="Background" Value="{StaticResource X_ListBoxItemSelected}" />
                   </Trigger>
                 </ControlTemplate.Triggers>
               </ControlTemplate>

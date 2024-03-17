@@ -402,4 +402,46 @@
   <data name="OpenSource" xml:space="preserve">
     <value>Open source address</value>
   </data>
+  <data name="EnchantOrder" xml:space="preserve">
+    <value>Enchantment order</value>
+  </data>
+  <data name="CalculatePressed" xml:space="preserve">
+    <value>Calculate the order of enchantment successful</value>
+  </data>
+  <data name="AddFavoriteSuccess" xml:space="preserve">
+    <value>Successfully add to the collection clip</value>
+  </data>
+  <data name="FavoriteNameDiscard" xml:space="preserve">
+    <value>Cancelled collection</value>
+  </data>
+  <data name="DeleteFavoriteFailed" xml:space="preserve">
+    <value>Delete project failure</value>
+  </data>
+  <data name="DeleteFavoriteSuccess" xml:space="preserve">
+    <value>Delete project success</value>
+  </data>
+  <data name="FavoriteSelectChanged" xml:space="preserve">
+    <value>Successfully display the display display</value>
+  </data>
+  <data name="Welcome" xml:space="preserve">
+    <value>welcome Minecraft Enchant Calculator</value>
+  </data>
+  <data name="AddFavoriteFailed" xml:space="preserve">
+    <value>Failure to add collection, you can't write files</value>
+  </data>
+  <data name="LoadFavoriteFailed" xml:space="preserve">
+    <value>Loading collection project failed</value>
+  </data>
+  <data name="FavoriteNameInputClosed" xml:space="preserve">
+    <value>The input box has been manually closed or entered an invalid name, and the collection cannot be added</value>
+  </data>
+  <data name="FavoriteHasPresent" xml:space="preserve">
+    <value>There are already collections of the same name and cannot be added</value>
+  </data>
+  <data name="LoadFavoriteSuccess" xml:space="preserve">
+    <value>Load project success</value>
+  </data>
+  <data name="AuthorStatement" xml:space="preserve">
+    <value>Author statement</value>
+  </data>
 </root>

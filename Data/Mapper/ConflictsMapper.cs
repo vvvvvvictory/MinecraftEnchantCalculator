@@ -1,21 +1,26 @@
-﻿using System.Data.SQLite;
+﻿using System.Configuration;
+using System.Data.SQLite;
+using System.Windows;
 using MinecraftEnchantCalculator.Data.DBModel;
-using MinecraftEnchantCalculator.Resources.Sqlite;
 
 namespace MinecraftEnchantCalculator.Data.Mapper
 {
   public class ConflictsMapper
   {
     public static ConflictsMapper Instance = new();
-    private static readonly string _query = string.Format(SqliteConfig.Default.Conflicts,
-      nameof(Conflict.EnchantmentCode_1), nameof(Conflict.EnchantmentCode_2));
+
     private static Dictionary<int, List<int>> _mapper;
 
     static ConflictsMapper()
     {
       _mapper = new Dictionary<int, List<int>>();
+      string? query = ConfigurationManager.AppSettings["Conflicts"];
+      if (query == null) {
+        MessageBox.Show("无法获取从数据库获取必要信息，程序即将退出", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+        Application.Current.Shutdown(-1);
+      }
 
-      using SQLiteCommand command = new SQLiteCommand(_query, DBConnection.Connection);
+      using SQLiteCommand command = new SQLiteCommand(query, DBConnection.Connection);
       using SQLiteDataReader reader = command.ExecuteReader();
       while (reader.Read()) {
         int enchantmentCode_1 = Convert.ToInt32(reader[nameof(Conflict.EnchantmentCode_1)]);

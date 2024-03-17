@@ -404,4 +404,46 @@
   <data name="OpenSource" xml:space="preserve">
     <value>开源地址</value>
   </data>
+  <data name="EnchantOrder" xml:space="preserve">
+    <value>附魔顺序</value>
+  </data>
+  <data name="CalculatePressed" xml:space="preserve">
+    <value>计算附魔顺序成功</value>
+  </data>
+  <data name="AddFavoriteSuccess" xml:space="preserve">
+    <value>成功添加到收藏夹</value>
+  </data>
+  <data name="FavoriteNameDiscard" xml:space="preserve">
+    <value>已取消收藏</value>
+  </data>
+  <data name="FavoriteNameInputClosed" xml:space="preserve">
+    <value>输入框已手动关闭或输入了无效的名字，无法添加收藏</value>
+  </data>
+  <data name="DeleteFavoriteFailed" xml:space="preserve">
+    <value>删除项目失败</value>
+  </data>
+  <data name="DeleteFavoriteSuccess" xml:space="preserve">
+    <value>删除项目成功</value>
+  </data>
+  <data name="FavoriteSelectChanged" xml:space="preserve">
+    <value>成功显示收藏的显示</value>
+  </data>
+  <data name="Welcome" xml:space="preserve">
+    <value>欢迎使用 Minecraft Enchant Calculator</value>
+  </data>
+  <data name="AddFavoriteFailed" xml:space="preserve">
+    <value>添加收藏失败，无法写入文件</value>
+  </data>
+  <data name="LoadFavoriteFailed" xml:space="preserve">
+    <value>加载收藏项目失败</value>
+  </data>
+  <data name="FavoriteHasPresent" xml:space="preserve">
+    <value>已经存在同名收藏，无法添加</value>
+  </data>
+  <data name="LoadFavoriteSuccess" xml:space="preserve">
+    <value>加载项目成功</value>
+  </data>
+  <data name="AuthorStatement" xml:space="preserve">
+    <value>作者声明</value>
+  </data>
 </root>

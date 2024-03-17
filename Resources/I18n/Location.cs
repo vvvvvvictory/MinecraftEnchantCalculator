@@ -35,7 +35,10 @@ namespace MinecraftEnchantCalculator.Resources.I18n
       return true;
     }
 
+    [Obsolete("Use RegionInfoChanged Instead")]
     public event Action? CultureChanged;
+
+    public event Action<string>? RegionInfoChanged;
 
     public void ChangeLocation(CultureInfo culture)
     {
@@ -44,6 +47,7 @@ namespace MinecraftEnchantCalculator.Resources.I18n
       PropertyChanged?.Invoke(this,
         new PropertyChangedEventArgs(Binding.IndexerName));
       CultureChanged?.Invoke();
+      RegionInfoChanged?.Invoke(culture.Name);
     }
   }
 }

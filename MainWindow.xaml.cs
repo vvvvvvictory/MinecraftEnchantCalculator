@@ -1,4 +1,5 @@
 ﻿using System.Collections.ObjectModel;
+using System.Configuration;
 using System.Globalization;
 using System.IO;
 using System.Text.Json;
@@ -7,10 +8,16 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
+using System.Windows.Media.Imaging;
+using System.Windows.Threading;
+using MinecraftEnchantCalculator.Components;
 using MinecraftEnchantCalculator.Data;
 using MinecraftEnchantCalculator.Data.Mapper;
 using MinecraftEnchantCalculator.Data.ViewModel;
+using MinecraftEnchantCalculator.Pages;
 using MinecraftEnchantCalculator.Resources.I18n;
+using MinecraftEnchantCalculator.Resources.Settings;
+using MinecraftEnchantCalculator.Source;
 
 namespace MinecraftEnchantCalculator
 {
@@ -19,14 +26,30 @@ namespace MinecraftEnchantCalculator
   /// </summary>
   public partial class MainWindow : Window
   {
-    private Dictionary<int, EnchantmentView> _bookEnchantmentViewsCache = new();
-    private Dictionary<int, EnchantmentView> _initEnchantmentViewsCache = new();
+    private static readonly ImageSource _error =
+      new BitmapImage(
+        new Uri("pack://application:,,,/MinecraftEnchantCalculator;component/Resources/images/PopError.png"));
+    private static readonly ImageSource _info =
+      new BitmapImage(
+        new Uri("pack://application:,,,/MinecraftEnchantCalculator;component/Resources/images/PopInfo.png"));
+    private static readonly ImageSource _success =
+      new BitmapImage(
+        new Uri("pack://application:,,,/MinecraftEnchantCalculator;component/Resources/images/PopSuccess.png"));
+    private static readonly ImageSource _warning =
+      new BitmapImage(
+        new Uri("pack://application:,,,/MinecraftEnchantCalculator;component/Resources/images/PopWarning.png"));
+
+    private Dictionary<int, EnchantmentView> _bookEnchantmentViewsCache = new(); // 物品附魔缓存
+    private Dictionary<int, EnchantmentView> _initEnchantmentViewsCache = new(); // 附魔书视图缓存
+    private DispatcherTimer _msgDurationTimer = new();                           // MessagePopup 显示时长计时器
 
     public MainWindow()
     {
       InitializeComponent();
-      DoTemplateCommandsBinding();
-      InitializeDataSource();
+      DoTemplateCommandsBinding(); // 初始化模板中的命令绑定
+      InitializeDataSource();      // 初始化组件数据源
+      InitMsgDurationTimer();      // 初始化消息框计时器
+      InitLocation();              // 初始化区域信息
     }
 
     public ObservableCollection<ItemView> ItemViews { get; } = new();                   // 物品选择
@@ -35,6 +58,30 @@ namespace MinecraftEnchantCalculator
     public SummaryView Summary { get; } = new();                                        // 结果汇总
     public ObservableCollection<FavoriteView> FavoriteViews { get; } = new();           // 收藏夹
     public ObservableCollection<ResultView> ResultViews { get; } = new();               // 过程展示
+
+    private void InitMsgDurationTimer()
+    {
+      _msgDurationTimer.Interval = TimeSpan.FromSeconds(5); // 默认显示5秒
+      _msgDurationTimer.Tick += (_, _) => {
+        // 到达指定时间后停止计时并隐藏消息框
+        _msgDurationTimer.Stop();
+        X_MessagePopup.Opacity = 0;
+      };
+    }
+
+    private void InitLocation()
+    {
+      // 设置界面语言，默认中文启动
+      string locationAbbrName = ConfigurationManager.AppSettings["LocationInfo"] ?? "zh-CN";
+      Location.Instance.ChangeLocation(new CultureInfo(locationAbbrName));
+
+      // 监听区域更改事件，保存用户选择
+      Location.Instance.RegionInfoChanged += regionAbbrName => {
+        Configuration config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+        config.AppSettings.Settings["LocationInfo"].Value = regionAbbrName;
+        config.Save(ConfigurationSaveMode.Modified);
+      };
+    }
 
     private void InitializeDataSource()
     {
@@ -79,11 +126,32 @@ namespace MinecraftEnchantCalculator
       }
     }
 
+    private void PushMessage(MessageType msgType, string msg)
+    {
+      // 停止计时器
+      _msgDurationTimer.Stop();
+
+      // 更新MessagePopup属性
+      X_MessagePopup.MessageType = msgType;
+      X_MessagePopup.Message = msg;
+      X_MessagePopup.Opacity = 1; // 重新显示气泡框
+      X_MessagePopup.Icon = msgType switch {
+        MessageType.ERROR => _error,
+        MessageType.WARNING => _warning,
+        MessageType.INFO => _info,
+        MessageType.SUCCESS => _success,
+        _ => throw new ArgumentOutOfRangeException(nameof(msgType), msgType, null)
+      };
+
+      _msgDurationTimer.Start(); // 重新开始计时
+    }
+
     private void DoTemplateCommandsBinding()
     {
       CommandBindings.Add(new CommandBinding(TemplateCommands.EnchantLevelIncreasing, LevelIncreasingButton_Click));
       CommandBindings.Add(new CommandBinding(TemplateCommands.EnchantLevelDecreasing, LevelDecreasingButton_Click));
       CommandBindings.Add(new CommandBinding(TemplateCommands.FavoriteViewsDelete, FavoriteViewsDeleteButton_Click));
+      CommandBindings.Add(new CommandBinding(AppCommands.StopBoringCommand, StopRotationAnimation));
     }
 
     private void ShiftMutex(int encCode, bool state)
@@ -131,17 +199,26 @@ namespace MinecraftEnchantCalculator
       ResultViews.Clear();
       Summary.Restore();
 
-      int cost = 0;
-      int maxCost = 0;
-      FavoriteView fv = (FavoriteView)X_FavoriteViews.SelectedItem;
-      foreach (ResultViewProspective rvp in fv.ResultViewProspectives) {
-        ResultViews.Add(rvp.ConvertBack());
-        cost += rvp.TargetCost;
-        maxCost = Math.Max(maxCost, rvp.TargetCost);
+      try {
+        int cost = 0;
+        int maxCost = 0;
+        FavoriteView fv = (FavoriteView)X_FavoriteViews.SelectedItem;
+        foreach (ResultViewProspective rvp in fv.ResultViewProspectives) {
+          ResultViews.Add(rvp.ConvertBack());
+          cost += rvp.TargetCost;
+          maxCost = Math.Max(maxCost, rvp.TargetCost);
+        }
+        Summary.TotalStep = fv.ResultViewProspectives.Count;
+        Summary.ExpCost = cost;
+        Summary.MaxCost = maxCost;
       }
-      Summary.TotalStep = fv.ResultViewProspectives.Count;
-      Summary.ExpCost = cost;
-      Summary.MaxCost = maxCost;
+      catch (Exception exception) {
+        PushMessage(MessageType.ERROR, Location.Instance[LanguageKey.Default.LoadFavoriteFailed] ?? "ERROR");
+        MessageBox.Show(this, $"无法加载收藏项：错误消息{exception.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+      }
+
+      // 加载成功
+      PushMessage(MessageType.SUCCESS, Location.Instance[LanguageKey.Default.LoadFavoriteSuccess] ?? "SUCCESS");
     }
 
     private void Calculate_Executed(object sender, ExecutedRoutedEventArgs e)
@@ -153,6 +230,8 @@ namespace MinecraftEnchantCalculator
       List<EnchantableItem> items = new List<EnchantableItem>();
 
       // 初始目标物品
+      // 这里selectedItemView一定不可能为null，因为我们在该命令的可执行逻辑中
+      // 确保了至少选择了一项可附魔物品
       ItemView selectedItemView = (ItemView)X_ItemViews.SelectedItem;
       EnchantableItem targetItem = new EnchantableItem(ItemType.ITEM, selectedItemView.Item.Code);
       foreach (EnchantmentView initEncView in InitEnchantmentViews) {
@@ -163,6 +242,7 @@ namespace MinecraftEnchantCalculator
       items.Add(targetItem);
 
       // 初始附魔书
+      // 同样，在该命令的执行逻辑中，我们已经确保至少选择了一本附魔书
       foreach (EnchantmentView bookEncView in BookEnchantmentViews) {
         if (!bookEncView.IsSelected) continue;
         EnchantableItem book = new EnchantableItem(ItemType.BOOK, -1);
@@ -171,22 +251,31 @@ namespace MinecraftEnchantCalculator
       }
 
       // 构建附魔树并统计结果
-      int step = 0;
-      int totalCost = 0;
-      int maxCost = 0;
-      AnvilTree.BuildTree(items,
-        (l, r, t) => {
-          ResultViews.Add(new ResultView(
-            new EnchantableItemView(l),
-            new EnchantableItemView(r),
-            new EnchantableItemView(t)));
-          step++;
-          totalCost += t.Cost;
-          maxCost = Math.Max(maxCost, t.Cost);
-        });
-      Summary.TotalStep = step;
-      Summary.MaxCost = maxCost;
-      Summary.ExpCost = totalCost;
+      try {
+        int step = 0;
+        int totalCost = 0;
+        int maxCost = 0;
+        AnvilTree.BuildTree(items,
+          (l, r, t) => {
+            ResultViews.Add(new ResultView(
+              new EnchantableItemView(l),
+              new EnchantableItemView(r),
+              new EnchantableItemView(t)));
+            step++;
+            totalCost += t.Cost;
+            maxCost = Math.Max(maxCost, t.Cost);
+          });
+        Summary.TotalStep = step;
+        Summary.MaxCost = maxCost;
+        Summary.ExpCost = totalCost;
+      }
+      catch (Exception ex) {
+        // 如果构建过程中不小心出现意外的错误，打印错误信息，用于排查，然后退出程序
+        MessageBox.Show(this, $"附魔过程中出现了意外异常，请尝试重新打开，异常信息：{ex.Message}", "Error", MessageBoxButton.OK);
+        Close();
+      }
+      // 附魔成功
+      PushMessage(MessageType.SUCCESS, Location.Instance[LanguageKey.Default.CalculatePressed] ?? "SUCCESS");
     }
 
     private void Calculate_CanExecute(object sender, CanExecuteRoutedEventArgs e)
@@ -202,22 +291,41 @@ namespace MinecraftEnchantCalculator
       input.CancelButtonClick += () => { isCancelClick = true; };
       input.ShowDialog();
 
+      // 取消收藏
       if (isCancelClick) {
+        PushMessage(MessageType.INFO, Location.Instance[LanguageKey.Default.FavoriteNameDiscard] ?? "INFO");
         return;
       }
       if (string.IsNullOrWhiteSpace(input.InputText)) {
-        MessageBox.Show(this, "Invalid input", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+        // 点击关闭
+        PushMessage(MessageType.WARNING, Location.Instance[LanguageKey.Default.FavoriteNameInputClosed] ?? "ERROR");
       }
       else {
+        string trim = input.InputText.Trim();
+        bool isPresent = FavoriteViews.Any(fv => fv.DisplayName == trim);
+        if (isPresent) {
+          PushMessage(MessageType.WARNING, Location.Instance[LanguageKey.Default.FavoriteHasPresent] ?? "WARNING");
+          return;
+        }
         string itemCultureKey = ItemViewMapper.Instance[ResultViews[^1].Target.EnchantableItem.ItemId].Item.CultureKey;
         FavoriteView fv = new FavoriteView(input.InputText, itemCultureKey, ResultViews);
         FavoriteViews.Add(fv);
 
         // 序列化保存文件
-        string jsonString = JsonSerializer.Serialize(fv);
-        string filePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Resources", "Json",
-          $"{fv.DisplayName}.json");
-        File.WriteAllText(filePath, jsonString);
+        try {
+          string jsonString = JsonSerializer.Serialize(fv);
+          string filePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Resources", "Json",
+            $"{fv.DisplayName}.json");
+          File.WriteAllText(filePath, jsonString);
+        }
+        catch (Exception exception) {
+          FavoriteViews.Remove(fv);
+          PushMessage(MessageType.ERROR, Location.Instance[LanguageKey.Default.AddFavoriteFailed] ?? "ERROR");
+          MessageBox.Show(this, $"无法写入文件：错误消息{exception.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+        }
+
+        // 收藏成功
+        PushMessage(MessageType.SUCCESS, Location.Instance[LanguageKey.Default.AddFavoriteSuccess] ?? "SUCCESS");
       }
     }
 
@@ -244,13 +352,27 @@ namespace MinecraftEnchantCalculator
         }
       }
       if (errors != 0) {
-        MessageBox.Show(this, $"Failed to load Json files, count = {errors}\n{failed!.Message}", "Error",
+        MessageBox.Show(this, $"Failed to load Json files, count = {errors}\n{failed.Message}", "Error",
           MessageBoxButton.OK,
           MessageBoxImage.Error);
       }
     }
 
+    private void MenuItem_OnClick(object sender, RoutedEventArgs e)
+    {
+      new ViewTest().Show();
+    }
+
+    private void MainWindow_OnLoaded(object sender, RoutedEventArgs e)
+    {
+      // 显示欢迎信息
+      string welcomeKey = LanguageKey.Default.Welcome;
+      PushMessage(MessageType.INFO, Location.Instance[welcomeKey] ?? welcomeKey);
+    }
+
     #region Is Boring
+    private HashSet<GroupBox> _rotateGroupBoxes = new();
+
     private void MainWindow_OnPreviewKeyDown(object sender, KeyEventArgs e)
     {
       switch (e.Key) {
@@ -274,6 +396,9 @@ namespace MinecraftEnchantCalculator
 
     private void StartRotationAnimation(GroupBox targetGroupBox)
     {
+      if (!_rotateGroupBoxes.Add(targetGroupBox)) {
+        return;
+      }
       DoubleAnimation animation = new DoubleAnimation {
         From = 0,
         To = 360,
@@ -284,6 +409,19 @@ namespace MinecraftEnchantCalculator
       targetGroupBox.RenderTransformOrigin = new Point(0.5, 0.5);
       targetGroupBox.RenderTransform = rotateTransform;
       rotateTransform.BeginAnimation(RotateTransform.AngleProperty, animation);
+    }
+
+    private void StopRotationAnimation(object sender, ExecutedRoutedEventArgs args)
+    {
+      if (_rotateGroupBoxes.Count < 1) {
+        return;
+      }
+      foreach (GroupBox gb in _rotateGroupBoxes) {
+        Transform gbRenderTransform = gb.RenderTransform;
+        gbRenderTransform.BeginAnimation(RotateTransform.AngleProperty, null);
+        gb.RenderTransform = null;
+      }
+      _rotateGroupBoxes.Clear();
     }
     #endregion
 
@@ -333,10 +471,14 @@ namespace MinecraftEnchantCalculator
         File.Delete(jsonFilePath);
       }
       catch (Exception e) {
-        MessageBox.Show(this, $"Failed to delete file: {fv.DisplayName}.json, Reason: {e.Message}", "Error",
+        PushMessage(MessageType.ERROR, Location.Instance[LanguageKey.Default.DeleteFavoriteFailed] ?? "ERROR");
+        MessageBox.Show(this, $"无法删除文件: {fv.DisplayName}.json, Reason: {e.Message}", "Error",
           MessageBoxButton.OK,
           MessageBoxImage.Error);
       }
+
+      // 删除成功
+      PushMessage(MessageType.SUCCESS, Location.Instance[LanguageKey.Default.DeleteFavoriteSuccess] ?? "SUCCESS");
     }
     #endregion
   }

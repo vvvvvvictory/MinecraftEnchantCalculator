@@ -1,23 +1,26 @@
-﻿using System.Data.SQLite;
+﻿using System.Configuration;
+using System.Data.SQLite;
+using System.Windows;
 using MinecraftEnchantCalculator.Data.DBModel;
 using MinecraftEnchantCalculator.Data.ViewModel;
-using MinecraftEnchantCalculator.Resources.Sqlite;
 
 namespace MinecraftEnchantCalculator.Data.Mapper
 {
   public class PrototypeEnchantmentViewMapper
   {
     public static PrototypeEnchantmentViewMapper Instance = new();
-    private static readonly string _query = string.Format(SqliteConfig.Default.Enchantments,
-      nameof(Enchantment.Code), nameof(Enchantment.CultureKey), nameof(Enchantment.MaxLevel),
-      nameof(Enchantment.ItemMultiplier), nameof(Enchantment.BookMultiplier));
     private static Dictionary<int, PrototypeEnchantmentView> _mapper;
 
     static PrototypeEnchantmentViewMapper()
     {
       _mapper = new Dictionary<int, PrototypeEnchantmentView>();
+      string? query = ConfigurationManager.AppSettings["Enchantments"];
+      if (query == null) {
+        MessageBox.Show("无法获取从数据库获取必要信息，程序即将退出", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+        Application.Current.Shutdown(-1);
+      }
 
-      using SQLiteCommand command = new SQLiteCommand(_query, DBConnection.Connection);
+      using SQLiteCommand command = new SQLiteCommand(query, DBConnection.Connection);
       using SQLiteDataReader reader = command.ExecuteReader();
       while (reader.Read()) {
         int code = Convert.ToInt32(reader[nameof(Enchantment.Code)]);

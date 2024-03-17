@@ -1,6 +1,6 @@
 ﻿using MinecraftEnchantCalculator.Data;
 
-namespace MinecraftEnchantCalculator
+namespace MinecraftEnchantCalculator.Source
 {
   public class AnvilTree
   {

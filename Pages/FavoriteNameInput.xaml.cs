@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel;
 using System.Windows;
 
-namespace MinecraftEnchantCalculator
+namespace MinecraftEnchantCalculator.Pages
 {
   /// <summary>
   ///   FavoriteNameInput.xaml 的交互逻辑

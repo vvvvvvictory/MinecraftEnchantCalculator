@@ -4,13 +4,14 @@
                     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
                     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
                     mc:Ignorable="d">
-  <Style x:Key="X_ResultViewImageStyle" TargetType="Image">
+  <Style x:Key="X_PART_ResultViewImageStyle" TargetType="Image">
     <Setter Property="Width" Value="60" />
     <Setter Property="Height" Value="60" />
     <Setter Property="Margin" Value="5 0" />
     <Setter Property="HorizontalAlignment" Value="Center" />
   </Style>
   <Style x:Key="X_ResultViewStyle" TargetType="ListBox">
+    <Setter Property="Background" Value="Transparent" />
     <Setter Property="BorderThickness" Value="0" />
     <Setter Property="ItemContainerStyle">
       <Setter.Value>
@@ -36,7 +37,7 @@
                         <ColumnDefinition Width="Auto" />
                         <ColumnDefinition Width="Auto" />
                       </Grid.ColumnDefinitions>
-                      <Image Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" Style="{StaticResource X_ResultViewImageStyle}" Source="{Binding Path=Left.ImageSource}" />
+                      <Image Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" Style="{StaticResource X_PART_ResultViewImageStyle}" Source="{Binding Path=Left.ImageSource}" />
                       <TextBlock Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" Text="{Binding Path=Left.DisplayName}" />
                       <TextBlock Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" Text="{Binding Path=Left.Description}" />
                       <Image Grid.Row="0" Grid.Column="2" Grid.RowSpan="2" Width="60" Height="60" Margin="30 0" Source="../Images/Plus.png" />
@@ -51,7 +52,7 @@
                         <ColumnDefinition Width="Auto" />
                         <ColumnDefinition Width="Auto" />
                       </Grid.ColumnDefinitions>
-                      <Image Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" Style="{StaticResource X_ResultViewImageStyle}" Source="{Binding Path=Right.ImageSource}" />
+                      <Image Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" Style="{StaticResource X_PART_ResultViewImageStyle}" Source="{Binding Path=Right.ImageSource}" />
                       <TextBlock Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" Text="{Binding Path=Right.DisplayName}" />
                       <TextBlock Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" Text="{Binding Path=Right.Description}" />
                       <Image Grid.Row="0" Grid.Column="2" Grid.RowSpan="2" Width="60" Height="60" Margin="30 0" Source="../Images/RightArrow.png" />
@@ -67,10 +68,10 @@
                         <ColumnDefinition Width="Auto" />
                         <ColumnDefinition Width="Auto" />
                       </Grid.ColumnDefinitions>
-                      <Image Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" Style="{StaticResource X_ResultViewImageStyle}" Source="{Binding Path=Target.ImageSource}" />
+                      <Image Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" Style="{StaticResource X_PART_ResultViewImageStyle}" Source="{Binding Path=Target.ImageSource}" />
                       <TextBlock Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" Text="{Binding Path=Target.DisplayName}" />
                       <TextBlock Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" Text="{Binding Path=Target.Description}" />
-                      <Image Grid.Row="0" Grid.Column="2" Grid.RowSpan="2" Style="{StaticResource X_ResultViewImageStyle}" Source="../Images/Exp.png" />
+                      <Image Grid.Row="0" Grid.Column="2" Grid.RowSpan="2" Style="{StaticResource X_PART_ResultViewImageStyle}" Source="../Images/Exp.png" />
                     </Grid>
 
                     <TextBlock Grid.Column="3" Margin="5 5 15 5" VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="32" Foreground="Green" Text="{Binding Path=Target.EnchantableItem.Cost}" />
@@ -78,7 +79,7 @@
                 </Border>
                 <ControlTemplate.Triggers>
                   <Trigger Property="IsMouseOver" Value="True">
-                    <Setter TargetName="X_PART_Border" Property="Background" Value="#e3fdfd" />
+                    <Setter TargetName="X_PART_Border" Property="Background" Value="{StaticResource X_ListBoxItemHover}" />
                   </Trigger>
                 </ControlTemplate.Triggers>
               </ControlTemplate>

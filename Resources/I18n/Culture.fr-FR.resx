@@ -402,4 +402,46 @@
   <data name="OpenSource" xml:space="preserve">
     <value>Adresse open source</value>
   </data>
+  <data name="EnchantOrder" xml:space="preserve">
+    <value>Ordre d'enchantement</value>
+  </data>
+  <data name="CalculatePressed" xml:space="preserve">
+    <value>Calculez l'ordre d'enchantement réussi</value>
+  </data>
+  <data name="AddFavoriteSuccess" xml:space="preserve">
+    <value>Ajouter avec succès au clip de collection</value>
+  </data>
+  <data name="FavoriteNameDiscard" xml:space="preserve">
+    <value>Collection annulée</value>
+  </data>
+  <data name="DeleteFavoriteFailed" xml:space="preserve">
+    <value>Supprimer l'échec du projet</value>
+  </data>
+  <data name="DeleteFavoriteSuccess" xml:space="preserve">
+    <value>Supprimer le succès du projet</value>
+  </data>
+  <data name="FavoriteSelectChanged" xml:space="preserve">
+    <value>Afficher avec succès l'affichage</value>
+  </data>
+  <data name="Welcome" xml:space="preserve">
+    <value>accueillir Minecraft Enchant Calculator</value>
+  </data>
+  <data name="AddFavoriteFailed" xml:space="preserve">
+    <value>Échec de la collection, vous ne pouvez pas écrire de fichiers</value>
+  </data>
+  <data name="LoadFavoriteFailed" xml:space="preserve">
+    <value>Le projet de collecte de chargement a échoué</value>
+  </data>
+  <data name="FavoriteNameInputClosed" xml:space="preserve">
+    <value>La boîte d'entrée a été fermée manuellement ou entrée un nom non valide, et la collection ne peut pas être ajoutée</value>
+  </data>
+  <data name="FavoriteHasPresent" xml:space="preserve">
+    <value>Il y a déjà des collections du même nom et ne peut pas être ajoutée</value>
+  </data>
+  <data name="LoadFavoriteSuccess" xml:space="preserve">
+    <value>Chargez le succès du projet</value>
+  </data>
+  <data name="AuthorStatement" xml:space="preserve">
+    <value>Déclaration de l'auteur</value>
+  </data>
 </root>

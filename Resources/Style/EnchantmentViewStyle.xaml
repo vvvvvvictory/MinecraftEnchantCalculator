@@ -3,10 +3,12 @@
                     xmlns:view_model="clr-namespace:MinecraftEnchantCalculator.Data.ViewModel"
                     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
                     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-                    xmlns:local="clr-namespace:MinecraftEnchantCalculator"
+                    xmlns:source="clr-namespace:MinecraftEnchantCalculator.Source"
                     mc:Ignorable="d">
-  <local:RomanConverter x:Key="X_RomanConverter" />
+  <source:RomanConverter x:Key="X_RomanConverter" />
   <Style x:Key="X_EnchantmentViewStyle" TargetType="ListBox">
+    <Setter Property="Background" Value="Transparent" />
+    <Setter Property="Margin" Value="5" />
     <Setter Property="BorderThickness" Value="0" />
     <Setter Property="ItemContainerStyle">
       <Setter.Value>
@@ -15,7 +17,7 @@
           <Setter Property="Template">
             <Setter.Value>
               <ControlTemplate TargetType="ListBoxItem">
-                <Border Name="X_PART_Border" Margin="15 5">
+                <Border Name="X_PART_Border" Margin="10 2" Padding="15 2" CornerRadius="4">
                   <Grid d:DataContext="{d:DesignInstance view_model:EnchantmentView}">
                     <Grid.ColumnDefinitions>
                       <!-- 复选框 -->
@@ -31,11 +33,11 @@
                       <!-- 下调按钮 -->
                       <ColumnDefinition Width="Auto" />
                     </Grid.ColumnDefinitions>
-                    <CheckBox Grid.Column="0" Name="X_PART_CheckBox" VerticalAlignment="Center" Focusable="False" IsChecked="{Binding RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay, Path=IsSelected}" />
+                    <CheckBox Grid.Column="0" Name="X_PART_CheckBox" Template="{StaticResource CheckBoxTemplateInListBox}" VerticalAlignment="Center" Focusable="False" IsChecked="{Binding RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay, Path=IsSelected}" />
                     <Image Grid.Column="1" Source="../Images/EnchantedBook.png" Width="30" Height="30" Margin="5 0" />
                     <TextBlock Grid.Column="2" Text="{Binding Path=PrototypeEnchantmentView.DisplayName}" Padding="5 2" VerticalAlignment="Center" />
                     <TextBlock Grid.Column="3" Text="{Binding Path=Level, Converter={StaticResource X_RomanConverter}}" VerticalAlignment="Center" />
-                    <Button Grid.Column="4" Width="25" Height="25" Background="Transparent" BorderThickness="1" BorderBrush="#1296db" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0 0 5 0" Command="{x:Static local:TemplateCommands.EnchantLevelIncreasing}" CommandParameter="{Binding}">
+                    <Button Grid.Column="4" Width="25" Height="25" Template="{StaticResource IconButtonTemplate}" Background="Transparent" BorderThickness="1" BorderBrush="#1296db" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0 0 5 0" Command="{x:Static source:TemplateCommands.EnchantLevelIncreasing}" CommandParameter="{Binding}">
                       <Button.Content>
                         <Grid>
                           <!-- 垂直部分 -->
@@ -45,7 +47,7 @@
                         </Grid>
                       </Button.Content>
                     </Button>
-                    <Button Grid.Column="5" Width="25" Height="25" Background="Transparent" BorderThickness="1" BorderBrush="#1296db" VerticalAlignment="Center" HorizontalAlignment="Center" Command="{x:Static local:TemplateCommands.EnchantLevelDecreasing}" CommandParameter="{Binding}">
+                    <Button Grid.Column="5" Width="25" Height="25" Template="{StaticResource IconButtonTemplate}" Background="Transparent" BorderThickness="1" BorderBrush="#1296db" VerticalAlignment="Center" HorizontalAlignment="Center" Command="{x:Static source:TemplateCommands.EnchantLevelDecreasing}" CommandParameter="{Binding}">
                       <!-- 水平部分 -->
                       <Rectangle Height="2" Width="15" Fill="#1296db" HorizontalAlignment="Center" VerticalAlignment="Center" />
                     </Button>
@@ -53,7 +55,7 @@
                 </Border>
                 <ControlTemplate.Triggers>
                   <Trigger Property="IsMouseOver" Value="True">
-                    <Setter TargetName="X_PART_Border" Property="Background" Value="#e3fdfd" />
+                    <Setter TargetName="X_PART_Border" Property="Background" Value="{StaticResource X_ListBoxItemHover}" />
                   </Trigger>
                   <DataTrigger Binding="{Binding PrototypeEnchantmentView.IsEnabled, Mode=OneWay}" Value="False">
                     <Setter Property="IsHitTestVisible" Value="False" />

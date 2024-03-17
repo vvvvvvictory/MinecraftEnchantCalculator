@@ -7,27 +7,45 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
-    <Compile Update="About.xaml.cs">
+    <Compile Update="Pages\About.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Donate.xaml.cs">
+    <Compile Update="Pages\Donate.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="FavoriteNameInput.xaml.cs">
+    <Compile Update="Pages\FavoriteNameInput.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Pages\ViewTest.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Page Update="About.xaml">
+    <Page Update="Pages\About.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Donate.xaml">
+    <Page Update="Pages\ViewTest.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="FavoriteNameInput.xaml">
+    <Page Update="Resources\GlobalShared.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Resources\Style\ScatteredComponentsStyle.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Resources\Template\CheckBoxTemplate.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Pages\Donate.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Pages\FavoriteNameInput.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="MainWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Resources\Style\BaseStyle.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Resources\Style\EnchantmentViewStyle.xaml">
@@ -36,13 +54,22 @@
     <Page Update="Resources\Style\FavoriteViewStyle.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Resources\Style\GroupBoxStyle.xaml">
+    <Page Update="Resources\Template\GenericButtonTemplate.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Resources\Template\GroupBoxTemplate.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Resources\Template\IconButtonTemplate.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Resources\Style\ItemViewStyle.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Resources\Style\ResultViewStyle.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Resources\Template\MenuItemTemplate.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>

@@ -1,0 +1,34 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+  <SolidColorBrush x:Key="GenericButton.MouseOver.Background" Color="#55efc4" />
+  <SolidColorBrush x:Key="GenericButton.MouseOver.Border" Color="#55efc4" />
+  <SolidColorBrush x:Key="GenericButton.Pressed.Background" Color="#00b894" />
+  <SolidColorBrush x:Key="GenericButton.Pressed.Border" Color="#00b894" />
+  <SolidColorBrush x:Key="GenericButton.Disabled.Background" Color="LightGray" />
+  <SolidColorBrush x:Key="GenericButton.Disabled.Border" Color="LightGray" />
+  <SolidColorBrush x:Key="GenericButton.Disabled.Foreground" Color="#2d3436" />
+  <ControlTemplate x:Key="GenericButtonTemplate" TargetType="{x:Type ButtonBase}">
+    <Border x:Name="border" CornerRadius="4" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" SnapsToDevicePixels="true">
+      <ContentPresenter x:Name="contentPresenter" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
+    </Border>
+    <ControlTemplate.Triggers>
+      <Trigger Property="Button.IsDefaulted" Value="true">
+        <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}" />
+      </Trigger>
+      <Trigger Property="IsMouseOver" Value="true">
+        <Setter Property="Background" TargetName="border" Value="{StaticResource GenericButton.MouseOver.Background}" />
+        <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource GenericButton.MouseOver.Border}" />
+      </Trigger>
+      <Trigger Property="IsPressed" Value="true">
+        <Setter Property="Background" TargetName="border" Value="{StaticResource GenericButton.Pressed.Background}" />
+        <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource GenericButton.Pressed.Border}" />
+      </Trigger>
+      <Trigger Property="IsEnabled" Value="false">
+        <Setter Property="Background" TargetName="border" Value="{StaticResource GenericButton.Disabled.Background}" />
+        <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource GenericButton.Disabled.Border}" />
+        <Setter Property="TextElement.Foreground" TargetName="contentPresenter" Value="{StaticResource GenericButton.Disabled.Foreground}" />
+      </Trigger>
+    </ControlTemplate.Triggers>
+  </ControlTemplate>
+</ResourceDictionary>

@@ -49,5 +49,113 @@ namespace MinecraftEnchantCalculator.Resources.Settings {
                 return ((string)(this["FeasibleNo"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Welcome")]
+        public string Welcome {
+            get {
+                return ((string)(this["Welcome"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("CalculatePressed")]
+        public string CalculatePressed {
+            get {
+                return ((string)(this["CalculatePressed"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("AddFavoriteSuccess")]
+        public string AddFavoriteSuccess {
+            get {
+                return ((string)(this["AddFavoriteSuccess"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("FavoriteNameDiscard")]
+        public string FavoriteNameDiscard {
+            get {
+                return ((string)(this["FavoriteNameDiscard"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("FavoriteNameInputClosed")]
+        public string FavoriteNameInputClosed {
+            get {
+                return ((string)(this["FavoriteNameInputClosed"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("DeleteFavoriteFailed")]
+        public string DeleteFavoriteFailed {
+            get {
+                return ((string)(this["DeleteFavoriteFailed"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("DeleteFavoriteSuccess")]
+        public string DeleteFavoriteSuccess {
+            get {
+                return ((string)(this["DeleteFavoriteSuccess"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("FavoriteSelectChanged")]
+        public string FavoriteSelectChanged {
+            get {
+                return ((string)(this["FavoriteSelectChanged"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("AddFavoriteFailed")]
+        public string AddFavoriteFailed {
+            get {
+                return ((string)(this["AddFavoriteFailed"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("LoadFavoriteFailed")]
+        public string LoadFavoriteFailed {
+            get {
+                return ((string)(this["LoadFavoriteFailed"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("FavoriteHasPresent")]
+        public string FavoriteHasPresent {
+            get {
+                return ((string)(this["FavoriteHasPresent"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("LoadFavoriteSuccess")]
+        public string LoadFavoriteSuccess {
+            get {
+                return ((string)(this["LoadFavoriteSuccess"]));
+            }
+        }
     }
 }

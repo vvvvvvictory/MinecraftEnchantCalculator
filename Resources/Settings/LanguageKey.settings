@@ -11,5 +11,41 @@
     <Setting Name="FeasibleNo" Type="System.String" Scope="Application">
       <Value Profile="(Default)">FeasibleNo</Value>
     </Setting>
+    <Setting Name="Welcome" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">Welcome</Value>
+    </Setting>
+    <Setting Name="CalculatePressed" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">CalculatePressed</Value>
+    </Setting>
+    <Setting Name="AddFavoriteSuccess" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">AddFavoriteSuccess</Value>
+    </Setting>
+    <Setting Name="FavoriteNameDiscard" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">FavoriteNameDiscard</Value>
+    </Setting>
+    <Setting Name="FavoriteNameInputClosed" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">FavoriteNameInputClosed</Value>
+    </Setting>
+    <Setting Name="DeleteFavoriteFailed" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">DeleteFavoriteFailed</Value>
+    </Setting>
+    <Setting Name="DeleteFavoriteSuccess" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">DeleteFavoriteSuccess</Value>
+    </Setting>
+    <Setting Name="FavoriteSelectChanged" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">FavoriteSelectChanged</Value>
+    </Setting>
+    <Setting Name="AddFavoriteFailed" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">AddFavoriteFailed</Value>
+    </Setting>
+    <Setting Name="LoadFavoriteFailed" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">LoadFavoriteFailed</Value>
+    </Setting>
+    <Setting Name="FavoriteHasPresent" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">FavoriteHasPresent</Value>
+    </Setting>
+    <Setting Name="LoadFavoriteSuccess" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">LoadFavoriteSuccess</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

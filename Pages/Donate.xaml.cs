@@ -1,6 +1,6 @@
 ﻿using System.Windows;
 
-namespace MinecraftEnchantCalculator
+namespace MinecraftEnchantCalculator.Pages
 {
   /// <summary>
   ///   Donate.xaml 的交互逻辑

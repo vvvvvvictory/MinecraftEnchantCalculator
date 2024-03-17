@@ -3,6 +3,17 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              StartupUri="MainWindow.xaml">
   <Application.Resources>
-
+    <ResourceDictionary>
+      <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="Resources/GlobalShared.xaml" />
+        <ResourceDictionary Source="/Resources/Style/BaseStyle.xaml" />
+        <!-- 这里引入模板 -->
+        <ResourceDictionary Source="Resources/Template/MenuItemTemplate.xaml" />
+        <ResourceDictionary Source="/Resources/Template/CheckBoxTemplate.xaml" />
+        <ResourceDictionary Source="/Resources/Template/IconButtonTemplate.xaml" />
+        <ResourceDictionary Source="/Resources/Template/GenericButtonTemplate.xaml" />
+        <ResourceDictionary Source="Resources/Template/GroupBoxTemplate.xaml" />
+      </ResourceDictionary.MergedDictionaries>
+    </ResourceDictionary>
   </Application.Resources>
 </Application>

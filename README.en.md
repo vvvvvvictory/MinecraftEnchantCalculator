@@ -10,7 +10,7 @@ Minecraft Enchant Calculator (MEC) is a tool designed to assist Minecraft player
 - Supports various types of enchantments.
 - User-friendly interface.
 - Multi-language support (machine translated, please verify).
-- Utilizes WPF framework and .Net 6.0 (default version), with a minimum support of .Net 4.8.
+- Utilizes WPF framework and .Net 6.0.
 
 ## Installation and Running
 
